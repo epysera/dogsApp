@@ -1,6 +1,12 @@
 package pl.coderslab.dogs.entity;
 
+import org.hibernate.validator.constraints.pl.NIP;
+import org.hibernate.validator.constraints.pl.REGON;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="shelters")
@@ -9,12 +15,29 @@ public class Shelter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String name;
+
+    @NIP
     private String nip;
+
+    @REGON
     private String regon;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     private City city;
+
+    public Shelter(Long id, String name, String nip, String regon, City city) {
+        this.id = id;
+        this.name = name;
+        this.nip = nip;
+        this.regon = regon;
+        this.city = city;
+    }
+
+    public Shelter() {
+
+    }
 
     public Long getId() {
         return id;

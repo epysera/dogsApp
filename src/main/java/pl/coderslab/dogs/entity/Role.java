@@ -1,32 +1,31 @@
 package pl.coderslab.dogs.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity
-@Table(name="cities")
-public class City {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotBlank
+    private int id;
     private String name;
 
-    public City(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
+
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public City() {
-
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
