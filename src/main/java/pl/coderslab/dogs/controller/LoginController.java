@@ -26,10 +26,10 @@ public class LoginController {
         Set<String> roles = user.getRoles().stream().map(Role::getName).collect(Collectors.toSet());
         Set<Integer> roleID = user.getRoles().stream().map(Role::getId).collect(Collectors.toSet());
         if (roleID.contains(1)) {
-            //render admin page
+            //render user page
             return "redirect:user/dashboard";
         } else if (roleID.contains(2)) {
-            //render vendor page
+            //render admin page
             return "redirect:admin/allDogs";
         } else
             return "/403";

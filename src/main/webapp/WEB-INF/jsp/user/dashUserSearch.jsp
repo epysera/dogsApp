@@ -6,7 +6,7 @@
 <h1 style="text-align: center;">Witaj ${user.username}</h1>
 
 <p style="text-align: right;">User: <c:out value="${user.username}"/><br />
-    <%--    Role: <c:out value="${user_role.role_id.name}"/></p>--%>
+<%--        Role: <c:out value="${user_role.role_id.name}"/></p>--%>
 
 <p style="text-align: right;"><a href="/user/userInfo">Zobacz konto</a></p>
 <hr>

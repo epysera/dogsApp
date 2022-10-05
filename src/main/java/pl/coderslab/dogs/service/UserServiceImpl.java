@@ -43,6 +43,13 @@ public class UserServiceImpl implements UserService {
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
+    @Override
+    public void deleteUser(User user) {
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoles(new HashSet<>(0));
+        userRepository.save(user);
+        userRepository.deleteById(user.getId());
+    }
 
 
 

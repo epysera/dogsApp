@@ -17,4 +17,6 @@ public interface UserService {
 
     void saveAdmin(User user);
 
+    void deleteUser(User user);
+
 }

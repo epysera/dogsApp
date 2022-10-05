@@ -9,4 +9,6 @@ public interface ShelterRepository extends JpaRepository<Shelter, Long> {
 
     @Override
     List<Shelter> findAll();
+
+    List<Shelter> findAllByName (String name);
 }

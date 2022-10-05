@@ -3,8 +3,11 @@ package pl.coderslab.dogs.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import pl.coderslab.dogs.entity.Dog;
+import pl.coderslab.dogs.entity.Role;
 import pl.coderslab.dogs.entity.Shelter;
+import pl.coderslab.dogs.entity.User;
 
+import java.util.HashSet;
 import java.util.List;
 
 public interface DogRepository extends JpaRepository<Dog, Long> {
@@ -13,7 +16,7 @@ public interface DogRepository extends JpaRepository<Dog, Long> {
     List<Dog> findAll();
 
     List<Dog> findAllByBreed (String breed);
-    List<Dog> findAllByShelter(Shelter shelter);
+    List <Dog> findAllByShelter(String shelter);
     List <Dog> findAllBySize (String size);
     List <Dog> findAllByCharacter(String character);
     List <Dog> findAllByName (String name);

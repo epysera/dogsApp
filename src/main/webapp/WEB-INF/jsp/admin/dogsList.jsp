@@ -14,6 +14,7 @@
     <th>Size</th>
     <th>Character</th>
     <th>Shelter</th>
+    <th>City</th>
     <th>Delete</th>
     <th>Update</th>
 
@@ -28,6 +29,7 @@
             <td><c:out value="${dog.size}"/></td>
             <td><c:out value="${dog.character}"/></td>
             <td><c:out value="${dog.shelter.name}"/></td>
+            <td><c:out value="${dog.shelter.city.name}"/></td>
 
             <td><a href="/admin/deleteDog/${dog.id}">delete</a></td>
             <td><a href="/admin/editDog/${dog.id}">update</a></td>

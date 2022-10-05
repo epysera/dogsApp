@@ -44,6 +44,8 @@ public class ImplDataController {
         shelterRepository.save(wwa);
         Shelter kosc = new Shelter(3L, "Psia Kość", "8641783394", "292807319",wroclaw);
         shelterRepository.save(kosc);
+        Shelter przytul = new Shelter(4L,"Przytul psa","7542718708","532317392",lodz);
+        shelterRepository.save(przytul);
 
         Dog luna = new Dog(1L, "Luna", "buldog francuski", "small", "family", banda);
         dogRepository.save(luna);
@@ -57,6 +59,14 @@ public class ImplDataController {
         dogRepository.save(lolek);
         Dog baton = new Dog(6L,"Baton", "mops","medium","family",kosc);
         dogRepository.save(baton);
+        Dog fafik = new Dog(7L,"Fafik", "kundel","medium","agressive",przytul);
+        dogRepository.save(fafik);
+        Dog bolek = new Dog(8L,"Bolek", "doberman","large","family",przytul);
+        dogRepository.save(bolek);
+        Dog kiki = new Dog(9L,"Kiki", "shitzu","small","family",wwa);
+        dogRepository.save(kiki);
+        Dog amigos = new Dog(10L,"Amigos", "shitzu","small","agressive",banda);
+        dogRepository.save(amigos);
 
         return "admin/dogsList";
 

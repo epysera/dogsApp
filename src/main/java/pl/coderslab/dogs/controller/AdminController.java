@@ -186,9 +186,11 @@ public class AdminController {
 
     @GetMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable long id) {
-        userRepository.deleteById(id);
+        userService.deleteUser(userRepository.getById(id));
         return "redirect:/admin/allUsers";
     }
+
+
     @GetMapping("/editUser/{id}")
     public String showEditFormUser(@PathVariable long id, Model model) {
         model.addAttribute("user", userRepository.getById(id));
@@ -204,9 +206,15 @@ public class AdminController {
         return "redirect:/admin/allUsers";
     }
 
-
-
-
+    @GetMapping("/create-admin")
+    @ResponseBody
+    public String createAdmin() {
+        User user = new User();
+        user.setUsername("admin11");
+        user.setPassword("start");
+        userService.saveAdmin(user);
+        return "Utworzyłeś admina";
+    }
 
 
 
@@ -224,8 +232,6 @@ public class AdminController {
     public List<String> sizes() {
         return Arrays.asList("small", "medium", "large");
     }
-
-
 
 
 

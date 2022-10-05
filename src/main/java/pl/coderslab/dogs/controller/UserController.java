@@ -15,6 +15,7 @@ import pl.coderslab.dogs.DogSearchMode;
 import pl.coderslab.dogs.entity.*;
 import pl.coderslab.dogs.repository.DogRepository;
 import pl.coderslab.dogs.repository.RoleRepository;
+import pl.coderslab.dogs.repository.ShelterRepository;
 import pl.coderslab.dogs.repository.UserRepository;
 import pl.coderslab.dogs.service.UserService;
 
@@ -30,12 +31,14 @@ public class UserController {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final DogRepository dogRepository;
+    private final ShelterRepository shelterRepository;
 
-    public UserController(UserService userService, RoleRepository roleRepository, UserRepository userRepository, DogRepository dogRepository) {
+    public UserController(UserService userService, RoleRepository roleRepository, UserRepository userRepository, DogRepository dogRepository, ShelterRepository shelterRepository) {
         this.userService = userService;
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.dogRepository = dogRepository;
+        this.shelterRepository = shelterRepository;
     }
 
     @GetMapping("/create-user")
@@ -48,15 +51,6 @@ public class UserController {
         return "Utowrzyłeś usera";
     }
 
-    @GetMapping("/create-admin")
-    @ResponseBody
-    public String createAdmin() {
-        User user = new User();
-        user.setUsername("admin11");
-        user.setPassword("start");
-        userService.saveAdmin(user);
-        return "Utworzyłeś admina";
-    }
 
     @GetMapping("/dashboard")
     public String dashboard(Model model, @AuthenticationPrincipal CurrentUser customUser) {
@@ -85,9 +79,6 @@ public class UserController {
                 case IMIĘ:
                     model.addAttribute("dogs", dogRepository.findAllByName(query));
                     break;
-//                case SCHRONISKO:
-//                    model.addAttribute("dogs", dogRepository.findAllByShelter(field));
-//                    break;
             }
             model.addAttribute("selectedField", field);
         } else {
@@ -110,12 +101,12 @@ public class UserController {
         }
 
 
-    @GetMapping("/hello")
-    @ResponseBody
-    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
-        User entityUser = customUser.getUser();
-        return "Hello " + entityUser.getUsername();
-    }
+//    @GetMapping("/hello")
+//    @ResponseBody
+//    public String admin(@AuthenticationPrincipal CurrentUser customUser) {
+//        User entityUser = customUser.getUser();
+//        return "Hello " + entityUser.getUsername();
+//    }
 
     @GetMapping("/userInfo")
     @ResponseBody
